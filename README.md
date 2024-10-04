@@ -69,7 +69,7 @@ Now that I have some information to work with I can begin building my detection 
 --------------------------------------
 ![Screenshot (631)](https://github.com/user-attachments/assets/815e6323-17c9-4f80-93f1-1c414fa6f3c3)
 
-This is the LINK to the rule as well as a more in depth breakdown of how I built it.
+This is the [LINK](https://github.com/karamkamal1/SOAR_EDR_Lab/blob/5d0ef10d401d3ed197858aeff8ad22dad64baaaf/Detection_Rule.md) to the rule.
 
 --------------------------------------
 ![Screenshot (638)](https://github.com/user-attachments/assets/51556df1-6557-43f8-8948-90384de0e9a1)
