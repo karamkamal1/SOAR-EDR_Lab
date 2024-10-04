@@ -12,13 +12,13 @@ The objective of this lab is to create a SOAR (Security Orchestration, Automatio
 
 - Understanding of design and implementation of SOAR Playbooks.
 - Enhanced knowledge in writing Detection rules for LimaCharlie.
-- Intermediate Knowledge of Tines Automation.
+- Intermediate Knowledge in Tines Automation.
 - Enchanced skills in Workflow Automation.
 - Gained Practical knowledge of Security Awareness and Endpoint Isolation.
 
 ### Tools Used
 
-- LimaCharlie: For Endpoint detection and response (EDR) as well as creating and implementing   
+- LimaCharlie: For Endpoint detection and response (EDR) as well as creating and implementing  
                detection rules. Also used for Endpoint Isolation.
 - Tines: For Orchestrating Automated Workflows
 - Slack/Email: Recieve real time alerts
@@ -125,111 +125,274 @@ In Destination Host I'll add our Tines webhook URL linking our Tines webhook wit
 -------------------------------------
 ![Screenshot (676)](https://github.com/user-attachments/assets/e38e74fd-28be-4eb8-9a4c-ba1d26471129)
 
-Next we need to link Tines to Slack to be able to recieve alerts in our Alert Channel. To do this I'll install the Tines app on slack.
-
----------------------------------------
-![Screenshot (677)](https://github.com/user-attachments/assets/a9b2da1b-417e-425b-ad49-8bf933fc6094)
-
-Now i'll head back to Tines and add a new Slack Credential to have authorization to send messages to slack.
+Next we need to link Slack to Tines to be able to recieve alerts in our Alert Channel. To do this I'll install the Tines app on slack.
 
 --------------------------------------
 ![Screenshot (680)](https://github.com/user-attachments/assets/95cbf60a-3760-4e55-b5fc-df3830362f60)
 
-I'll select slack from our dropdown list and go through the prompts to connect.
+Now i'll head back to Tines and add a new Slack Credential to have authorization to send messages to slack. 
+
 
 --------------------------------------
+![Screenshot (682)](https://github.com/user-attachments/assets/d5b1461e-62a0-4bf9-98ca-278b7e36109c)
 
-![Screenshot (682)](https://github.com/user-attachments/assets/747e6a97-05ef-4d91-a1ae-8dc066cfcab8)
 
-We now have our new Slack Credential.
+I'll select slack from our dropdown list and go through the prompts to connect.
 
 --------------------------------------
 ![Screenshot (685)](https://github.com/user-attachments/assets/2f4364f5-8e1f-4834-aa99-0f9b95ae935d)
 
-I'll head back to the workbook and add a Send Message Slack Template, I'll copy the Slack Alert Channel ID and paste it into the Slack send message template.
+We now have our new Slack Credential.
 
 --------------------------------------
-![Screenshot (691)](https://github.com/user-attachments/assets/f04b5cfe-1d62-44aa-a20c-33c204195b62)
+![Screenshot (687)](https://github.com/user-attachments/assets/f9b9e8e8-2d81-4e20-87b5-d3d1a1250e0c)
 
-I'll now click test. If everything is working we should recieve the message Hello, World in our slack channel. You can see the message that's going to be sent in the message box.
+
+I'll head back to the workbook and add a Send Message Slack Template, I'll copy the Slack Alert Channel ID and paste it into the Slack send message template.
 
 --------------------------------------
 ![Screenshot (693)](https://github.com/user-attachments/assets/2465d7a1-6ba0-4603-985b-794135e4e8cf)
 
-The message was recieved in the correct channel. On the right track.
+I'll now click test. If everything is working we should recieve the message Hello, World in our slack channel. You can see the message that's going to be sent in the message box.
 
 --------------------------------------
-![Screenshot (694)](https://github.com/user-attachments/assets/287cbea9-d7d9-4270-ad45-57340491e30c)
+
+![Screenshot (694)](https://github.com/user-attachments/assets/cef80800-9133-4321-8eda-5b098881ac36)
+
+The message was recieved in the correct channel. Everything seems to be linked and I'm on the right track.
+
+--------------------------------------
 
 ![Screenshot (698)](https://github.com/user-attachments/assets/d329f7d2-fc13-4411-9f6e-d9c63177c7d6)
 
+I will now add a send email action to our workbook, and click test.
+
+--------------------------------------
+
 ![Screenshot (699)](https://github.com/user-attachments/assets/bc230493-37d8-402f-932d-94dd2bf60978)
+
+The email was successfully recieved.
+
+---------------------------------------
+
+![Screenshot (700)](https://github.com/user-attachments/assets/40ad31fe-a3a4-4891-a0e9-449d3d272265)
+
+Now I will move on to creating the user prompt, giving a yes or no option to isolate the machine. To do this I add a pages that will be named User Prompt. Pages creates a webpage to add the Yes or No prompt on.
+
+---------------------------------------
 
 ![Screenshot (704)](https://github.com/user-attachments/assets/6513f2d0-63c1-4521-a1c7-3fbc419ee2b6)
 
+The User Prompt page has been added, and and has been connected to our detection webhook.
+
+---------------------------------------
+
+![Screenshot (709)](https://github.com/user-attachments/assets/b19bdff0-aa7e-4a76-bea1-f8e382c21c3d)
+
+On the page I add a Submit Button, I will also add a Boolean allowing us to assign a true and false value to the yes and no buttons.
+
+---------------------------------------
+
 ![Screenshot (722)](https://github.com/user-attachments/assets/c4726fc9-0c4b-417a-a664-4be32ec1f849)
+
+I will now find and copy the paths I would like to copy from the event to display for the user.
+
+---------------------------------------
 
 ![Screenshot (725)](https://github.com/user-attachments/assets/aacd627a-cd5b-4bed-88a2-6d6a8342fffd)
 
+This is the list of Paths I will be using and their corresponding information. 
+
+--------------------------------------
 ![Screenshot (735)](https://github.com/user-attachments/assets/dad48d97-1f56-4ad7-8d1a-12159d8d8d5f)
+
+I will paste these paths to the Message portion of our Slack send message build. I'll Select test.
+
+-------------------------------------
 
 ![Screenshot (739)](https://github.com/user-attachments/assets/88bf7a97-928d-4c76-b601-bbe284894844)
 
+Awesome the Slack message was sent all of our selectged event information.
+
+-------------------------------------
+
 ![Screenshot (740)](https://github.com/user-attachments/assets/d8e976f1-6c9e-41b2-a010-0b1f4384d773)
+
+I will now add labels to each event path so it's a little more user friendly and easier to read. I will also add it to the Message section of our splunk message build.
+
+-------------------------------------
 
 ![Screenshot (747)](https://github.com/user-attachments/assets/932441cd-82f8-4ced-a13b-4257d34e4fdd)
 
+Now the Slack maessage is a lot easier to read.
+
+-------------------------------------
+
 ![Screenshot (750)](https://github.com/user-attachments/assets/54718e7a-12d0-4a79-a060-9e66c3079672)
+
+I will now add the paths to my send email action.
+
+-------------------------------------
+
+![Screenshot (754)](https://github.com/user-attachments/assets/d477c980-5a0b-43e2-aed7-3d7da9250b04)
+
+The email message must be formatted in html.
+
+-------------------------------------
 
 ![Screenshot (756)](https://github.com/user-attachments/assets/023fb204-3530-4416-831c-81ace1f2ea99)
 
-![Screenshot (758)](https://github.com/user-attachments/assets/170875ce-9e5a-47be-ad3d-1c2e88b3c265)
+Now when I recieve an email it includes all the required fields in a user friendly way.
 
-![Screenshot (761)](https://github.com/user-attachments/assets/6e2d1dde-dcea-47f3-9987-66b8f46bdea2)
+--------------------------------------
+
+![Screenshot (760)](https://github.com/user-attachments/assets/b831e7de-9be6-449c-abdd-f69dbbff10eb)
+
+I will add the paths to the user prompt page as well.
+
+-------------------------------------
 
 ![Screenshot (763)](https://github.com/user-attachments/assets/27e6b629-99ce-4eca-9547-26736d00460c)
 
+I select visit webpage and I select a recent event. 
+
+--------------------------------------
+
 ![Screenshot (764)](https://github.com/user-attachments/assets/99db5483-4270-40f1-b745-2d030d23dc97)
+
+Now when I view the page we can see all our event information, alongside our Yes and No boolean and Submit Button. Pretty cool !
+
+--------------------------------------
 
 ![Screenshot (765)](https://github.com/user-attachments/assets/2d8903c8-e67a-4760-8562-0fe662f08e10)
 
+I will now add our triggers which will process our true and false boolean and perform an action.
+
+-------------------------------------
+
 ![Screenshot (773)](https://github.com/user-attachments/assets/5ff67ace-6bfa-4a14-8924-099f72173d83)
+
+The first trtigger will be named no. The Rules field will include a path to the yes or no button selection. In this case the user selects No so we can attribute that button press to false.
+
+
+-----------------------------------
 
 ![Screenshot (780)](https://github.com/user-attachments/assets/94e67d88-0143-41cf-bda8-78eddcd89728)
 
+I will now add a slack send message action to send a message notifying of the Computer name and that it was not isolated.
+
+
+----------------------------------
+
 ![Screenshot (785)](https://github.com/user-attachments/assets/d3b50df7-209c-4843-82ba-76986334681d)
+
+Now when the user selects No a message is sent to Slack.
+
+---------------------------------
 
 ![Screenshot (786)](https://github.com/user-attachments/assets/7e7aeab3-eb9a-45b0-aaf6-fdd6ed1fb34e)
 
+I am going to add another trigger for when Yes is pressed on the user prompt.
+
+---------------------------------
+
 ![Screenshot (796)](https://github.com/user-attachments/assets/78167f8d-1e84-4c2b-8f44-c9dea8a6c906)
+
+I will name it yes and give it the same rool as the no prompt equal to true.
+
+---------------------------------
 
 ![Screenshot (799)](https://github.com/user-attachments/assets/8cefda03-7bf7-41a9-9d1b-e17cd981b2f3)
 
+I will add a LimaCharlie Isolate Sensor Template. To isolate our infected computer.
+The Sensor ID must also be added.
+
+--------------------------------
 ![Screenshot (800)](https://github.com/user-attachments/assets/4f8a1e76-0798-4b7a-80dc-ab49a3ad059d)
 
+I will copy the sensor ID path.
+
+-------------------------------
 ![Screenshot (801)](https://github.com/user-attachments/assets/f2053c6a-2296-4380-8242-1ca269973077)
 
+I'll paste the Sensor ID path into the URL. To recap when a user clicks the Yes button in the user prompt, it will trigger the yes trigger getting our LimaCharlie Isolate Sensor HTTP Request to isolate our infected computer from the network. 
+
+-------------------------------
 ![Screenshot (805)](https://github.com/user-attachments/assets/649cac0c-0a77-41ca-bc97-9eb1c2249360)
+
+
+To authenitcate the LimaCharlie Isolate sensor request a credential needs to be added. There is no preset credential so text credential at the top must be selected. 
+
+-------------------------------
 
 ![Screenshot (813)](https://github.com/user-attachments/assets/418714b6-d08e-449a-8470-d9e0fcd6e32c)
 
-![Screenshot (816)](https://github.com/user-attachments/assets/e8addf32-0ac4-4513-9a72-bd3b9f998499)
+I will name the credential LimaCharlie, and in the value line you will add the API for LimaCharlie which can be found under access managment on the LimaCharlie Dashboard.
+
+-------------------------------
+
+![Screenshot (815)](https://github.com/user-attachments/assets/9ac53bc4-ac6a-4488-a1b3-e4c23ce3bb34)
+
+
+Click Connect on LimaCharlie under Credentials.
+
+--------------------------------
+
+![Screenshot (817)](https://github.com/user-attachments/assets/0178283d-44b9-4044-8f5c-7012b2fc0157)
+
+
+I will also copy my slack send message template, change the message to "The Computer <Computer Name> Was Successfully Isolated, and connect it to the Isolate sensor Http Request.
+
+---------------------------------
 
 ![Screenshot (819)](https://github.com/user-attachments/assets/aaf06a87-3cc1-4751-9f66-2ad46140e2f4)
 
-![Screenshot (824)](https://github.com/user-attachments/assets/011438af-b867-434c-adce-7698b30e7208)
+You can choose to add another Lima Charlie HTTP request to get the isolation status. This is extra and I will not be including the isolation status in the confirmation message.
 
+---------------------------------
+
+![Screenshot (824)](https://github.com/user-attachments/assets/39a9cc2a-cda6-405e-b534-b34c29be373c)
+
+I will also connect the Slack and Email Send Request to the User Prompt page so I can include the user prompt URL in the Slack Message and the email. I also added the user prompt URL path to the Slack and Email Message with the Label of Choose To Isolate.
+
+--------------------------------
 ![Screenshot (826)](https://github.com/user-attachments/assets/0857dcee-bff2-4cef-8243-005033d8eb09)
 
+Everything is now configured. I will show on the LimaCharlie dashboard that network access is allowed for our connected sensor/computer.
+
+---------------------------------
 ![Screenshot (825)](https://github.com/user-attachments/assets/9c976160-eaea-4c2d-a749-ec51103ebfd2)
 
+
+I will now execute LaZagne.exe on our computer.
+
+----------------------------------
 ![Screenshot (827)](https://github.com/user-attachments/assets/e41c83a6-04d2-426d-b055-8ccc8b5b641f)
 
+A message is sent to Slack In the Laert channel with all of our important event information and a link to our prompt allowing the choice to isolate or not. AWESOME !!
+
+-----------------------------------
 ![Screenshot (828)](https://github.com/user-attachments/assets/de9349be-76cb-4d30-a6ea-f4f7ad4104f3)
 
+An email is also sent with the same information.
+
+
+--------------------------------------
 ![Screenshot (829)](https://github.com/user-attachments/assets/345636c0-475b-42df-afa0-9258de4d8bc0)
 
+
+Clicking on the Choose To Isolate Link we are taken to our user prompt. I will select Yes to Isolate the computer.
+
+
+---------------------------------------
 ![Screenshot (830)](https://github.com/user-attachments/assets/5b50b607-745d-48a4-9b58-a7016b225ac1)
 
+
+The Computer is now Isolated. That's super cool !
+
+---------------------------------------
 ![Screenshot (831)](https://github.com/user-attachments/assets/9d7a05f2-71d1-4d3e-bb8e-bf0b69ab566e)
 
+A message is also sent to our slack channel letting us know our computer was successfully isolated. Everything is configured and everything works (:
+
+----------------------------------------
