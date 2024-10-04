@@ -23,7 +23,39 @@ The objective of this lab is to create a SOAR (Security Orchestration, Automatio
 - Tines: For Orchestrating Automated Workflows
 - Slack/Email: Recieve real time alerts
 
-## Explanation
+## Result of Lab
+
+Tines Workflow
+![Screenshot (823)](https://github.com/user-attachments/assets/b6bebabd-234c-4b3c-9617-7015b858e88c)
+
+-----------------------------------
+Our LimaCharlie Detection Rule
+![Screenshot (833)](https://github.com/user-attachments/assets/54246730-022a-45ea-97ab-800e64f5892b)
+This is the [LINK](https://github.com/karamkamal1/SOAR_EDR_Lab/blob/5d0ef10d401d3ed197858aeff8ad22dad64baaaf/Detection_Rule.md) to the rule.
+
+-----------------------------------
+Detection Email
+![Screenshot (828)](https://github.com/user-attachments/assets/9a24da59-0288-4dde-94e1-5ffaea6e048c)
+
+------------------------------------
+Slack Message
+![Screenshot (827)](https://github.com/user-attachments/assets/0c69284d-ab73-46f8-92bd-71292c2e2984)
+
+------------------------------------
+User Prompt to choose to isolate infected computer
+![Screenshot (829)](https://github.com/user-attachments/assets/dc6815e7-dab3-45a1-8425-8c53e09bf333)
+
+-------------------------------------
+When Yes is Selected on the User Prompt
+![Screenshot (830)](https://github.com/user-attachments/assets/70631035-8490-4d36-9b44-c59756c3c30a)
+The infected Computer is Isolated form the network thanks to Lima Charlie
+
+----------------------------------------
+A confirmation message is sent via Slack letting us know our infected computer is isolated from the network
+![Screenshot (831)](https://github.com/user-attachments/assets/bee9498f-0dff-4f9d-9d5f-55a31c82046e)
+
+
+## Detailed Explanation
 
 ![Screenshot (579)](https://github.com/user-attachments/assets/0fa5a038-83df-4dd8-99c2-5341a96d148d)
 
